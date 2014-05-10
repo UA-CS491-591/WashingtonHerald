@@ -15,7 +15,7 @@ namespace WebServices.Controllers.API
         [HttpGet]
         public List<DtoCategory> categories(string token)
         {
-            if (AccountController.isValidWriter(token))
+            if (AccountController.isValidReader(token) || AccountController.isValidWriter(token))
             {
                 List<Category> categories = db.Categories.ToList();
 

@@ -24,7 +24,7 @@
     <Property Name="DatePublished" Type="datetime" Nullable="false" />
     <Property Name="Lat" Type="float" Nullable="true" />
     <Property Name="Lng" Type="float" Nullable="true" />
-    <Property Name="author" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="authorId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateUpdated" Type="datetime" Nullable="false" />
   </EntityType>
@@ -71,7 +71,7 @@
           <Property Type="DateTime" Name="DatePublished" Nullable="false" />
           <Property Type="Double" Name="Lat" Nullable="true" />
           <Property Type="Double" Name="Lng" Nullable="true" />
-          <Property Type="String" Name="author" Nullable="false" />
+          <Property Type="Guid" Name="authorId" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="StoryModel.CategoryStory" FromRole="Story" ToRole="Category" />
           <Property Type="Guid" Name="CategoryId" Nullable="false" />
           <Property Type="DateTime" Name="DateUpdated" Nullable="false" />
@@ -113,7 +113,7 @@
           <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
           <ScalarProperty Name="Lat" ColumnName="Lat" />
           <ScalarProperty Name="Lng" ColumnName="Lng" />
-          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="authorId" ColumnName="authorId" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
         </MappingFragment>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2014 18:53:31
+-- Date Created: 05/10/2014 08:41:55
 -- Generated from EDMX file: C:\Users\Matthew\Github\WebServices\Project2\WebServices\StoryModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CategoryStory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stories] DROP CONSTRAINT [FK_CategoryStory];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Stories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Stories];
+GO
+IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categories];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -36,7 +45,7 @@ CREATE TABLE [dbo].[Stories] (
     [DatePublished] datetime  NOT NULL,
     [Lat] float  NULL,
     [Lng] float  NULL,
-    [author] nvarchar(max)  NOT NULL,
+    [authorId] uniqueidentifier  NOT NULL,
     [CategoryId] uniqueidentifier  NOT NULL,
     [DateUpdated] datetime  NOT NULL
 );

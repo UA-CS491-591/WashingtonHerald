@@ -21,7 +21,7 @@ namespace WebServices
         public System.DateTime DatePublished { get; set; }
         public Nullable<double> Lat { get; set; }
         public Nullable<double> Lng { get; set; }
-        public string author { get; set; }
+        public System.Guid authorId { get; set; }
         public System.Guid CategoryId { get; set; }
         public System.DateTime DateUpdated { get; set; }
     

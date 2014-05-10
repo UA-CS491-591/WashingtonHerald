@@ -13,6 +13,23 @@ namespace WebServices.Controllers.API
         StoryModelContainer db = new StoryModelContainer();
 
         [HttpGet]
+        public DtoStory byId(Guid token, Guid storyId)
+        {
+            if (AccountController.isValidReader(token.ToString()) || AccountController.isValidWriter(token.ToString()))
+            {
+                //Fetch story
+                Story story = db.Stories.Where(s => s.Id.Equals(storyId)).SingleOrDefault();
+
+                if (story != null)
+                {
+                    return DtoStory.dtoFromStory(story);
+                }
+            }
+
+            return null;
+        }
+
+        [HttpGet]
         public List<DtoStory> recent(string token)
         {
             if (AccountController.isValidReader(token) || AccountController.isValidWriter(token))
@@ -25,7 +42,7 @@ namespace WebServices.Controllers.API
 
                     foreach (Story story in stories)
                     {
-                        dtoStories.Add(DtoStory.dtoFromStory(story));
+                        dtoStories.Add(DtoStory.lightDtoFromStory(story));
                     }
 
                     return dtoStories;
@@ -36,13 +53,46 @@ namespace WebServices.Controllers.API
         }
 
         [HttpGet]
-        public List<DtoStory> byCategory(Guid token, string categoryId)
+        public List<DtoStory> byCategory(Guid token, Guid categoryId)
         {
             if (AccountController.isValidReader(token.ToString()) || AccountController.isValidWriter(token.ToString()))
             {
-                Category category = db.Categories.Where(c => c.Id.Equals(token)).SingleOrDefault();
+                Category category = db.Categories.Where(c => c.Id == categoryId).SingleOrDefault();
 
-                List<Story> stories = category.Stories.OrderByDescending( s => s.DatePublished).ToList();
+                if (category != null)
+                {
+                    List<Story> stories = category.Stories.OrderByDescending(s => s.DatePublished).ToList();
+
+                    if (stories != null)
+                    {
+
+                        List<DtoStory> dtoStories = new List<DtoStory>();
+
+                        foreach (Story story in stories)
+                        {
+                            dtoStories.Add(DtoStory.lightDtoFromStory(story));
+                        }
+
+                        return dtoStories;
+                    }
+                    else
+                    {
+                        return new List<DtoStory>();
+                    }
+                }
+                
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        public List<DtoStory> byAuthor(Guid token, string authorId)
+        {
+            if (AccountController.isValidReader(token.ToString()) || AccountController.isValidWriter(token.ToString()))
+            {
+
+                List<Story> stories = db.Stories.Where(s => s.authorId.Equals(authorId)).OrderByDescending(s => s.DatePublished).ToList();
 
                 if (stories != null)
                 {
@@ -50,7 +100,7 @@ namespace WebServices.Controllers.API
 
                     foreach (Story story in stories)
                     {
-                        dtoStories.Add(DtoStory.dtoFromStory(story));
+                        dtoStories.Add(DtoStory.lightDtoFromStory(story));
                     }
 
                     return dtoStories;
@@ -73,7 +123,7 @@ namespace WebServices.Controllers.API
 
                     foreach (Story story in stories)
                     {
-                        dtoStories.Add(DtoStory.dtoFromStory(story));
+                        dtoStories.Add(DtoStory.lightDtoFromStory(story));
                     }
 
                     return dtoStories;
@@ -92,7 +142,7 @@ namespace WebServices.Controllers.API
 
                 if (category != null)
                 {
-                    Story story = DtoStory.newStoryFromDto(dtoAddStory.story);
+                    Story story = DtoStory.newStoryFromDto(dtoAddStory);
 
                     if (story != null)
                     {

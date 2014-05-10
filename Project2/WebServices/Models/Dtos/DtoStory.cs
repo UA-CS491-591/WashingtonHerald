@@ -20,19 +20,20 @@ namespace WebServices.Models.Dtos
         public static DtoStory dtoFromStory (Story story)
         {
 
-            DtoUser user = DtoUser.UserForUserName(story.author);
+            DtoUser user = DtoUser.UserForUserId(story.authorId);
 
             if (user != null)
             {
                 DtoStory dto = new DtoStory();
                 dto.storyId = story.Id;
-                dto.author = DtoUser.UserForUserName(story.author);
+                dto.author = DtoUser.UserForUserId(story.authorId);
                 dto.datePublished = story.DatePublished.ToUniversalTime();
                 dto.title = story.Title;
                 dto.subtitle = story.Subtitle;
                 dto.body = story.Body;
                 dto.lat = story.Lat;
                 dto.lng = story.Lng;
+                dto.category = DtoCategory.dtoFromCategory(story.Category);
 
                 return dto;
             }
@@ -40,16 +41,40 @@ namespace WebServices.Models.Dtos
             return null;
         }
 
-        public static Story newStoryFromDto(DtoStory dtoStory)
+        public static DtoStory lightDtoFromStory(Story story)
+        {
+
+            DtoUser user = DtoUser.UserForUserId(story.authorId);
+
+            if (user != null)
+            {
+                DtoStory dto = new DtoStory();
+                dto.storyId = story.Id;
+                dto.author = DtoUser.UserForUserId(story.authorId);
+                dto.datePublished = story.DatePublished.ToUniversalTime();
+                dto.title = story.Title;
+                dto.subtitle = story.Subtitle;
+                dto.body = null;
+                dto.lat = story.Lat;
+                dto.lng = story.Lng;
+                dto.category = DtoCategory.dtoFromCategory(story.Category);
+
+                return dto;
+            }
+
+            return null;
+        }
+
+        public static Story newStoryFromDto(DtoAddStory dtoStory)
         {
             //Check for user
-            DtoUser user = DtoUser.UserForUserName(dtoStory.author.username);
+            DtoUser user = DtoUser.UserForUserId(dtoStory.authorId);
 
             if (user != null)
             {
                 Story story = new Story();
                 story.Id = Guid.NewGuid();
-                story.author = user.username;
+                story.authorId = user.Id;
                 story.DatePublished = DateTime.UtcNow;
                 story.DateUpdated = DateTime.UtcNow;
                 story.Body = dtoStory.body;

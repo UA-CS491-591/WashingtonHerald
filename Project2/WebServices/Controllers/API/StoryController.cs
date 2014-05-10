@@ -87,7 +87,7 @@ namespace WebServices.Controllers.API
         }
 
         [HttpGet]
-        public List<DtoStory> byAuthor(Guid token, string authorId)
+        public List<DtoStory> byAuthor(Guid token, Guid authorId)
         {
             if (AccountController.isValidReader(token.ToString()) || AccountController.isValidWriter(token.ToString()))
             {

@@ -1,4 +1,3 @@
-Project2WebServices
-===================
+##Washington Herald News Apps
 
-The web services for project 2
+Corporate needs two apps for the Washington Herald. The particulars are listed below. This is a high priority project. You will have **two weeks** to build a working prototype with some polish. 

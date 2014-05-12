@@ -24,6 +24,7 @@ namespace WebServices
         public System.Guid authorId { get; set; }
         public System.Guid CategoryId { get; set; }
         public System.DateTime DateUpdated { get; set; }
+        public string ImageUrl { get; set; }
     
         public virtual Category Category { get; set; }
     }

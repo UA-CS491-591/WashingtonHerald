@@ -111,7 +111,7 @@ namespace WebServices.Controllers.API
         }
 
         [HttpGet]
-        public List<DtoStory> search(string token, string searchString)
+        public List<DtoStory> search(string token, string searchString, Guid ? authorId = null)
         {
             if (AccountController.isValidReader(token) || AccountController.isValidWriter(token))
             {
@@ -119,11 +119,29 @@ namespace WebServices.Controllers.API
 
                 if (stories != null)
                 {
+                    DtoUser author = null;
+                    if (authorId.HasValue)
+                    {
+                        author = DtoUser.UserForUserId(authorId.Value);
+                    }
+                    
+
                     List<DtoStory> dtoStories = new List<DtoStory>();
 
                     foreach (Story story in stories)
                     {
-                        dtoStories.Add(DtoStory.lightDtoFromStory(story));
+                        //Filter by author, if appropriate
+                        if (author != null)
+                        {
+                            if (author.Id.Equals(authorId))
+                            {
+                                 dtoStories.Add(DtoStory.lightDtoFromStory(story));
+                            }
+                        }
+                        else if(author == null && authorId == null)
+                        {
+                            dtoStories.Add(DtoStory.lightDtoFromStory(story));
+                        }
                     }
 
                     return dtoStories;

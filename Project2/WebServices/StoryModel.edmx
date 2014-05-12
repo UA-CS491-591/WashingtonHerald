@@ -27,6 +27,7 @@
     <Property Name="authorId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Categories">
     <Key>
@@ -75,6 +76,7 @@
           <NavigationProperty Name="Category" Relationship="StoryModel.CategoryStory" FromRole="Story" ToRole="Category" />
           <Property Type="Guid" Name="CategoryId" Nullable="false" />
           <Property Type="DateTime" Name="DateUpdated" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" Nullable="true" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -116,6 +118,7 @@
           <ScalarProperty Name="authorId" ColumnName="authorId" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

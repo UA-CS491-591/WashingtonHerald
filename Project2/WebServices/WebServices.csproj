@@ -143,6 +143,7 @@
       <DependentUpon>StoryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\API\AccountController.cs" />
+    <Compile Include="Controllers\API\AuthorController.cs" />
     <Compile Include="Controllers\API\CategoryController.cs" />
     <Compile Include="Controllers\API\StoryController.cs" />
     <Compile Include="Controllers\Web\HomeController.cs" />

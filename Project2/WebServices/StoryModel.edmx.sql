@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 05/10/2014 08:41:55
+-- Date Created: 05/12/2014 11:29:55
 -- Generated from EDMX file: C:\Users\Matthew\Github\WebServices\Project2\WebServices\StoryModel.edmx
 -- --------------------------------------------------
 
@@ -47,7 +47,8 @@ CREATE TABLE [dbo].[Stories] (
     [Lng] float  NULL,
     [authorId] uniqueidentifier  NOT NULL,
     [CategoryId] uniqueidentifier  NOT NULL,
-    [DateUpdated] datetime  NOT NULL
+    [DateUpdated] datetime  NOT NULL,
+    [ImageUrl] nvarchar(max)  NULL
 );
 GO
 

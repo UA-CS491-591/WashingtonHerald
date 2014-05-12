@@ -16,6 +16,7 @@ namespace WebServices.Models.Dtos
         public double ? lat { get; set; }
         public double ? lng { get; set; }
         public DtoCategory category { get; set; }
+        public String imageUrl { get; set; }
 
         public static DtoStory dtoFromStory (Story story)
         {
@@ -33,6 +34,7 @@ namespace WebServices.Models.Dtos
                 dto.body = story.Body;
                 dto.lat = story.Lat;
                 dto.lng = story.Lng;
+                dto.imageUrl = story.ImageUrl;
                 dto.category = DtoCategory.dtoFromCategory(story.Category);
 
                 return dto;
@@ -50,14 +52,15 @@ namespace WebServices.Models.Dtos
             {
                 DtoStory dto = new DtoStory();
                 dto.storyId = story.Id;
-                dto.author = DtoUser.UserForUserId(story.authorId);
+                dto.author = null;
                 dto.datePublished = story.DatePublished.ToUniversalTime();
                 dto.title = story.Title;
                 dto.subtitle = story.Subtitle;
                 dto.body = null;
                 dto.lat = story.Lat;
                 dto.lng = story.Lng;
-                dto.category = DtoCategory.dtoFromCategory(story.Category);
+                dto.imageUrl = story.ImageUrl;
+                dto.category = null;
 
                 return dto;
             }

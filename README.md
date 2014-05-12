@@ -13,17 +13,19 @@ This app will be public facing and has the following requirements:
 - Free text search for stories
 - Splash screen and icon
 - Must work on 4 inch and 3.5 inch screens
+- **Optional:** View story location on a map
 
 ###Writers App
 
 This app will be private and used by the writers to manage their stories:
 
 - Login
-- View author information
 - View the logged in writer's stories
 - Add, edit, and remove stories
 - Splash screen and icon
 - Must work on 4 inch and 3.5 inch screens
+- **Optional:** View author information
+- **Optional:** Take in current location for story 
 
 ###Available Resources
 
@@ -31,4 +33,14 @@ The web team has already sketched out a web service to log you in and give you a
 
 ###Accounts
 
-Contact the project lead for your test credentials. Multiple accounts for readers and writers are available.
+Account credentials are listed below. The first value is the user's name followed by their username and password
+
+- **Readers**
+  - Frank Underwood - funderwood, password 
+  - Claire underwood - cunderwood, password 
+  - Doug Stamper - dstamper, password 
+- **Writers**
+  - Zoey Barnes - zbarnes, password 
+  - Lucas Goodwin - lgoodwin, password 
+  - Janine Skorsky - jskorsky, password 
+

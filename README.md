@@ -1,6 +1,6 @@
 ![banner](https://raw.githubusercontent.com/UA-CS491-591/Resources/master/washington_herald_banner.png)
 
-Corporate needs two apps for the Washington Herald. The particulars are listed below. This is a high priority project. You will have **two weeks** to build a working prototype with some polish. 
+Your task is to build two apps for the Washington Herald. The particulars are listed below. Given the large readership of the Washinton Herald, this is a high priority project. You will have **two weeks** to build a working prototype with some polish. 
 
 ###News Reader App
 

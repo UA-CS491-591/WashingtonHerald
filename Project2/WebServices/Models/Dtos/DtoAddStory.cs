@@ -14,5 +14,6 @@ namespace WebServices.Models.Dtos
         public double? lat { get; set; }
         public double? lng { get; set; }
         public Guid categoryId { get; set; }
+        public String imageUrl { get; set; }
     }
 }

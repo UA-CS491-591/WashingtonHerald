@@ -85,6 +85,7 @@ namespace WebServices.Models.Dtos
                 story.Subtitle = dtoStory.subtitle;
                 story.Lat = dtoStory.lat;
                 story.Lng = dtoStory.lng;
+                story.ImageUrl = dtoStory.imageUrl;
 
                 return story;
             }

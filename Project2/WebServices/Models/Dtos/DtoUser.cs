@@ -31,6 +31,7 @@ namespace WebServices.Models.Dtos
                 user.email = "zbarnes@washHerald.com";
                 user.position = "Staff Writer";
                 user.isWriter = true;
+                user.imageUrl = "https://pbs.twimg.com/profile_images/3242188460/3df65e6ab14df234bbe6bfb19da6c7ec.png";
                 return user;
             }
             else if (username.Equals("lgoodwin"))
@@ -43,6 +44,7 @@ namespace WebServices.Models.Dtos
                 user.email = "lgoodwin@washHerald.com";
                 user.position = "Political Editor";
                 user.isWriter = true;
+                user.imageUrl = "http://img2.wikia.nocookie.net/__cb20130209211723/house-of-cards/images/b/ba/Sk%C3%A6rmbillede_2013-02-09_kl._22.16.56.png";
                 return user;
             }
             else if (username.Equals("jskorsky"))
@@ -55,6 +57,7 @@ namespace WebServices.Models.Dtos
                 user.email = "jskorsky@washHerald.com";
                 user.position = "Chief Political Correspondent";
                 user.isWriter = true;
+                user.imageUrl = "http://livinginthehouseofcards.files.wordpress.com/2013/03/cz027.jpg";
                 return user;
             }
             else if (username.Equals("funderwood"))
@@ -67,6 +70,7 @@ namespace WebServices.Models.Dtos
                 user.email = "underwood@house.gov";
                 user.position = "Subscriber";
                 user.isWriter = false;
+                user.imageUrl = "http://img2.wikia.nocookie.net/__cb20140227094826/house-of-cards/images/d/df/Frank_Underwood_3.jpg";
                 return user;
             }
             else if (username.Equals("cunderwood"))
@@ -79,6 +83,7 @@ namespace WebServices.Models.Dtos
                 user.email = "claired@cwi.org";
                 user.position = "Subscriber";
                 user.isWriter = false;
+                user.imageUrl = "http://www.lifesitenews.com/images/sized/images/news/ClaireUnderwoodHouseOfCards-250px-240x224.jpg";
                 return user;
             }
             else if (username.Equals("dstamper"))
@@ -91,6 +96,7 @@ namespace WebServices.Models.Dtos
                 user.email = "dstamper@house.gov";
                 user.position = "Subscriber";
                 user.isWriter = false;
+                user.imageUrl = "https://www.google.com/search?q=doug+stamper&es_sm=93&tbm=isch&imgil=cmk48xq4TA8dLM%253A%253Bhttps%253A%252F%252Fencrypted-tbn0.gstatic.com%252Fimages%253Fq%253Dtbn%253AANd9GcQ2n9trqQrNSW_tpTz0iPt6EEP7vOEwRDd5rVXyxPkoxS2I4dnGYA%253B800%253B440%253BEZIG-yos8rzO-M%253Bhttp%25253A%25252F%25252Fwww.youthconnectmag.com%25252F2014%25252F02%25252F24%25252Fhouse-of-cards-in-india%25252F&source=iu&usg=__w0Wqojp5BDUKF7cl2-JehtjrBv4%3D&sa=X&ei=_f1wU9qNIYqksQT-gIGYDg&ved=0CEAQ9QEwBQ#facrc=_&imgdii=_&imgrc=oG95yeVCfF9BuM%253A%3B-FwB6EeTCti1_M%3Bhttps%253A%252F%252Fpbs.twimg.com%252Fprofile_images%252F3204682365%252F3c8169391816121ce9e06eccf9fc61e0.jpeg%3Bhttps%253A%252F%252Ftwitter.com%252FTheStamperAct%3B240%3B240";
                 return user;
             }
 

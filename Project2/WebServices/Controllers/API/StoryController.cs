@@ -115,7 +115,7 @@ namespace WebServices.Controllers.API
         {
             if (AccountController.isValidReader(token) || AccountController.isValidWriter(token))
             {
-                List<Story> stories = db.Stories.Where(s => s.Title.Contains(searchString) || s.Subtitle.Contains(searchString) || s.Body.Contains(searchString)).OrderByDescending(s => s.DatePublished).Take(20).ToList();
+                List<Story> stories = db.Stories.Where(s => s.Title.Contains(searchString)).OrderByDescending(s => s.DatePublished).Take(20).ToList();
 
                 if (stories != null)
                 {
@@ -133,7 +133,7 @@ namespace WebServices.Controllers.API
                         //Filter by author, if appropriate
                         if (author != null)
                         {
-                            if (author.Id.Equals(authorId))
+                            if (author.Id.Equals(story.authorId))
                             {
                                  dtoStories.Add(DtoStory.lightDtoFromStory(story));
                             }
@@ -161,6 +161,8 @@ namespace WebServices.Controllers.API
                 if (category != null)
                 {
                     Story story = DtoStory.newStoryFromDto(dtoAddStory);
+                    story.DatePublished = DateTime.UtcNow;
+                    story.DateUpdated = DateTime.UtcNow;
 
                     if (story != null)
                     {
@@ -190,6 +192,25 @@ namespace WebServices.Controllers.API
                     story.Lat = dto.story.lat;
                     story.Lng = dto.story.lng;
                     story.DateUpdated = DateTime.UtcNow;
+                    story.ImageUrl = dto.story.imageUrl;
+
+                    //Set category id
+                    if (dto.story.category != null)
+                    {
+                        if (dto.story.category.categoryId != null)
+                        {
+                            story.CategoryId = dto.story.category.categoryId;
+                        }
+                    }
+
+                    //Set author id
+                    if (dto.story.author != null)
+                    {
+                        if (dto.story.author.Id != null)
+                        {
+                            story.authorId = dto.story.author.Id;
+                        }
+                    }
 
                     db.SaveChanges();
                     return true;
